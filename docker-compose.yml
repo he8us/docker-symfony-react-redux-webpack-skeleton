@@ -16,6 +16,7 @@ services:
     depends_on:
       - php
       - nginx
+      - mysql
     networks:
       - frontend
 
@@ -49,7 +50,6 @@ services:
     volumes:
       - composer-data:/root/composer
       - ~/.ssh:/root/.ssh:ro
-
 
   nginx:
     image: he8us/nginx-symfony

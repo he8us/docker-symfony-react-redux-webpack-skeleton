@@ -1,6 +1,14 @@
 {
     "presets": [
         "es2015",
-        "react"
-    ]
+        "react",
+        "survivejs-kanban"
+    ],
+    "env": {
+        "webpack": {
+            "presets": [
+                "react-hmre"
+            ]
+        }
+    }
 }

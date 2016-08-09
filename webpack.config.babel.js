@@ -2,7 +2,9 @@ import Webpack from 'webpack';
 import path from 'path';
 import validate from 'webpack-validator';
 import merge from 'webpack-merge';
-import * as actions from './app/Resources/build/actions.js'
+import AssetsPlugin from 'assets-webpack-plugin';
+import * as actions from './app/Resources/build/actions.js';
+
 
 const TARGET =  process.env.NODE_ENV || process.env.npm_lifecycle_event;
 process.env.BABEL_ENV = TARGET
@@ -13,7 +15,6 @@ const PATHS = {
     'public': path.join(__dirname, './web'),
     'build': path.join(__dirname, './web/apps')
 }
-
 
 
 const common = {
@@ -44,7 +45,12 @@ const common = {
                 loaders: ['json']
             }
         ]
-    }
+    },
+    plugins: [
+        new AssetsPlugin({
+            filename: 'assets.json'
+        })
+    ]
 };
 
 let config;
@@ -82,12 +88,12 @@ switch (TARGET) {
                     })
                 ],
                 output: {
-                    filename: '[name]/bundle.js'
+                    filename: '[name]/bundle.[hash].js'
                 }
             },
             actions.lintJS(PATHS.build),
             actions.extractCSS(PATHS.style),
-            actions.extractCommons()
+            actions.extractCommons(true)
         );
         break;
 

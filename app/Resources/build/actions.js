@@ -20,12 +20,19 @@ export const lintJS = function (path) {
     }
 }
 
-export const extractCommons = function () {
+export const extractCommons = function (deploy = false) {
+    let name = "shared.js"
+    if(deploy){
+        name = "shared.[hash].js";
+    }
+
     return {
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin("commons", "commons.js")
+            new webpack.optimize.CommonsChunkPlugin("commons", name)
         ]
     }
+
+
 }
 
 export const loadIsparta = function (include) {

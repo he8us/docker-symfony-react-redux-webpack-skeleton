@@ -14,3 +14,10 @@
 /vendor/
 /web/bundles/
 node_modules
+test-output
+.nyc_output
+assets.json
+**/bundle.*.js
+**/bundle.*.js.map
+**/shared.*.js
+**/shared.*.js.map

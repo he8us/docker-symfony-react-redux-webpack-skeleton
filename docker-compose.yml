@@ -13,9 +13,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./devtools/nginx-vhost.d:/etc/nginx/vhost.d:ro
-    depends_on:
-      - php
-      - nginx
     networks:
       - frontend
 
@@ -49,7 +46,6 @@ services:
     volumes:
       - composer-data:/root/composer
       - ~/.ssh:/root/.ssh:ro
-
 
   nginx:
     image: he8us/nginx-symfony

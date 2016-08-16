@@ -40,10 +40,8 @@ services:
       - 80
     command: npm run server
     working_dir: /var/www/skeleton
-
     networks:
+      frontend:
       backend:
         aliases:
           - build.${MASTER_DOMAIN}
-
-      frontend:

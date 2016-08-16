@@ -18,3 +18,5 @@ web/apps/commons.js
 web/apps/commons.js.map
 web/apps/core/bundle.js
 web/apps/core/bundle.js.map
+test-output
+.nyc_output

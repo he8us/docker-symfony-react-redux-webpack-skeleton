@@ -5,10 +5,13 @@
         "survivejs-kanban"
     ],
     "env": {
-        "webpack": {
+        "development": {
             "presets": [
                 "react-hmre"
             ]
+        },
+        "test": {
+            "plugins": [ "istanbul" ]
         }
     }
 }

@@ -1,19 +1,18 @@
 import React from 'react';
 
-
 export default class Demo extends React.Component{
     static propTypes = {
-        who: React.PropTypes.string
+        name: React.PropTypes.string
     }
 
-    getWho(){
-        return this.props.who || 'World'
+    getName(){
+        return this.props.name || 'World'
     }
 
     render(){
         return (
             <div>
-                <p>Hello { this.getWho() }</p>
+                <p>Hello { this.getName() }</p>
             </div>
         )
     }

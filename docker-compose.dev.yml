@@ -41,4 +41,7 @@ services:
     command: npm run server
     working_dir: /var/www/skeleton
     networks:
-      - frontend
+      frontend:
+      backend:
+        aliases:
+          - build.${MASTER_DOMAIN}

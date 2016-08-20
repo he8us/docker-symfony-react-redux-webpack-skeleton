@@ -125,6 +125,7 @@ case ${command} in
         start
         composer install
         assets
+        success "Init Done"
         ;;
 
     *)

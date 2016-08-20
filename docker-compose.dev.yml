@@ -39,7 +39,8 @@ services:
     ports:
       - 80
     command: npm run server
-    working_dir: /var/www/skeleton
+    working_dir: /var/www/${COMPOSE_PROJECT_NAME}
+
     networks:
       frontend:
       backend:

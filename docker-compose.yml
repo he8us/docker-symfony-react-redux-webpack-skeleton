@@ -4,7 +4,7 @@ services:
   app:
     image: debian:jessie
     volumes:
-      - .:/var/www/skeleton
+      - .:/var/www/${COMPOSE_PROJECT_NAME}
 
   proxy:
     image: jwilder/nginx-proxy:latest
@@ -34,13 +34,13 @@ services:
       APPLICATION_ENV: ${APPLICATION_ENV}
     volumes_from:
       - app
-    working_dir: /var/www/skeleton
+    working_dir: /var/www/${COMPOSE_PROJECT_NAME}
     networks:
       - backend
 
   composer:
     image: composer/composer:latest
-    working_dir: /var/www/skeleton
+    working_dir: /var/www/${COMPOSE_PROJECT_NAME}
     volumes_from:
       - app
     volumes:
@@ -53,7 +53,7 @@ services:
       - "80"
     environment:
       VIRTUAL_HOST: www.${MASTER_DOMAIN}
-      DOCUMENT_ROOT: /var/www/skeleton/web
+      DOCUMENT_ROOT: /var/www/${COMPOSE_PROJECT_NAME}/web
       APPLICATION_ENV: ${APPLICATION_ENV}
       LOG_FILE: skeleton
     volumes_from:
